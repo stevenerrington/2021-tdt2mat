@@ -1,0 +1,20 @@
+# Matlab autosave files
+*.asv
+
+# sample binary files and JRC output
+sample*.bin
+sample*.jrc
+sample*.png
+sample*.prm
+sample*.csv
+
+# docs
+docs/build
+docs/venv
+
+# Misc
+*.mat
+*.ipynb
+.vscode/
+read_Intan_RHD2000_file.m
+npy-matlab

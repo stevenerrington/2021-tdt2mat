@@ -1,0 +1,22 @@
+; TEMPO DIALOG CONFIGURATION FILE
+; Copyright 1997-2019 Reflective Computing.  All Rights Reserved.
+; This file was created by TEMPO and should not be edited directly by the user.
+; The commands in this file are undocumented and subject to change in future releases.
+; Fri Feb 08 17:18:49 2019
+; DLOAD C:\tempo\ProcLib\MAIN_MENU.dcf
+
+; DIALOGS
+
+SCREENRES 1280,768,32,1,0,0
+
+DIAPAGE 0,"Main_Menu"
+DIAPOS   0,0,0,0,-1,-1,83,134,281,388,0
+DIAOBJ   0,0,2,33,177,147,200,"Cancel","DPOP"
+DIAOBJ   0,1,2,33,141,147,164,"TEST_SSD","STOP;CCLEAR;\r\nCLOAD c:/tempo/proclib/test/test_ssd.pcf;\r\n"
+DIAOBJ   0,2,2,33,106,147,129,"Bitsweep","STOP;CCLEAR;\r\nCLOAD c:/tempo/proclib/test/bitsweep.pcf;\r\n"
+DIAOBJ   0,3,2,33,36,147,59,"Countermanding","STOP;CCLEAR;\r\nCLOAD c:/tempo/proclib/cmd_tsk.pcf;\r\n"
+DIAOBJ   0,4,1,50,7,143,32,"","Choose Task"
+DIAOBJ   0,5,2,33,71,147,94,"Tonetest","STOP;CCLEAR;\r\nCLOAD c:/tempo/proclib/test/tonetest.pcf;\r\n"
+
+; END OF DIALOGS
+

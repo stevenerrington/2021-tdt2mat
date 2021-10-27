@@ -1,0 +1,83 @@
+; TEMPO PROTOCOL CONFIGURATION FILE
+; Copyright 1997-2019 Reflective Computing.  All Rights Reserved.
+; This file was created by TEMPO and should not be edited directly by the user.
+; The commands in this file are undocumented and subject to change in future releases.
+; Thu Jan 24 08:13:40 2019
+; CLOAD BITSWEEP.pcf
+
+; tempow 16.10 Set 49.20   'ADMINf811251' connected to 'TEMPO1'
+; KPED 17.1 Set 49
+; KSRV 16.8 Set 49.20 (Server 'TEMPO1          ' running on computer '')
+; PCL 0.0     TEMPO 0.0
+; ANALOGRESOLUTION=16
+; WARNING=2
+; SPEED=1000.000000  PROSPEED=1000.000000  (100/100000 Sec/SampleSet)
+; ASETS=1(1)  CSETS=1(1)  ESETS=1(1)
+; ACHANNELS=8
+; CCHANNELS=0
+; ECHANNELS=2
+;
+;                          Protocol Usage of Kernel Resources  
+;
+; Parameter       Limit          Used    Pct        Bytes/Total        Develop    Stable
+; -------------   -------     -------  -----        -----------        -------    ------
+; PROCESSES       =300              0     0%            0/13200         =0         =0       
+; INSTRUCTIONS    =1820             0     0%            0/32760         =1         =1       
+; InstructionsXMS =20025            0     0%            0/360448        =1         =1       
+; SYMBOLTABLE     =4000             0     0%            0/32000         =0         =0       
+; NametableXMS    =208896           0     0%            0/208896                        
+; NAMETABLE       =40894      -168002  10502272%      -168002/40894         =5052705052  =4520841362
+; DATABASES       =16               0     0%            0/960           =0         =0       
+; ARRAYTABLE      =30000            0     0%            0/30000         =0         =0       
+; ARRAYDATA       =30000128         0     0%            0/30000128      =0         =0       
+; OBJECTS         =0                0     0%            0/0             =0         =0       
+;
+; PROTOCOL PROCESS CONTROL BLOCKS (XMS Instructions Caching ENABLED)
+; INSTRUCTIONS=1820,20024
+; Memory (bytes):  0/32760 Conventional, 0/360448 XMS
+; Server CPU Mhz  Empirical 3391.6    Theoretical 3400.0
+;
+;    STATE PROCESS  Longest  0.000ms   PC INST  MAX LONG     MS  MaxMS LongMS Bytes  Conventional        XMS      Loaded  uSec 
+
+
+SPEED 1000
+
+; ANALOG TABLE SETTINGS
+;; ACHANNELS=8
+
+
+ACHANINFO 0
+
+
+; EVENT TABLE SETTINGS
+;; ECHANNELS=2
+
+
+ECHANINFO 0
+
+PLOAD BITSWEEP.PRO
+
+DLOAD BITSWEEP.dcf
+DSHOW Bitsweep
+
+; DATABASES=16
+
+
+; WINDOW CONFIGURATION
+
+SCREENRES 1366,768,32,1,0,0
+MAINWND 1,0,0,-1,-1,47,78,1072,619,0
+MSGWND 1,-1,-1,-1,-1,886,242,1366,692,0
+
+; DATABASES PAGES & VIEWS
+
+DBPCOLORS 0x0,0x0,0x0,0x0,0x0
+
+; END GRAPH CONFIGURATION
+
+; DIALOGS
+
+SCREENRES 1366,768,32,1,0,0
+
+; END OF DIALOGS
+

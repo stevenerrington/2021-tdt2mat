@@ -1,0 +1,13 @@
+% Order of the probe sites in the recording file
+channels = [1:16]; 
+nChannels = numel(channels);
+% Site coordinate (x,y) in micrometers
+geometry = zeros(nChannels,2);
+geometry(:,1) = zeros(nChannels,1);
+geometry(:,2) = 150*(1:nChannels);
+
+% Recording contact pad size in micrometers. Height x width
+pad = [12 13];
+
+% Single shank contains site 1-16
+shank = ones(size(channels)); 

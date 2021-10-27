@@ -1,0 +1,38 @@
+; TEMPO DIALOG CONFIGURATION FILE
+; Copyright 1997-2019 Reflective Computing.  All Rights Reserved.
+; This file was created by TEMPO and should not be edited directly by the user.
+; The commands in this file are undocumented and subject to change in future releases.
+; Fri Mar 29 13:16:37 2019
+; DLOAD C:\tempo\ProcLib\CMD_TSK.dcf
+
+; DIALOGS
+
+SCREENRES 1280,768,32,1,0,0
+
+DIAPAGE 0,"CMD_Task_Menu"
+DIAPOS   0,0,0,0,-1,-1,14,55,373,503,0
+DIAONENTRY 0,"quiet RIG_ID=RIG_029_ID;\r\nquiet MONK_ID=JOULE_ID;;\r\nquiet SHOW_PAGES = 0;\r\n"
+DIAONEXIT 0,"\r\n"
+DIAOBJ   0,0,1,59,6,247,29,"","Countermanding Task Menu"
+DIAOBJ   0,1,2,9,382,117,406,"Main_Menu","STOP;\r\nCCLEAR;\r\nCLOAD C:/TEMPO/PROCLIB/MAIN_MENU.pcf;\r\n"
+DIAOBJ   0,2,2,122,382,230,406,"Cancel","quiet SHOW_PAGES = 0;\r\nquiet CALIBRATE_EYE =0;\r\nquiet CALIBRATING = 0;\r\nquiet RUN_TASK = 0;\r\n"
+DIAOBJ   0,3,1,22,31,98,56,"","Current Rig"
+DIAOBJ   0,4,1,123,32,205,57,"","Current Subj."
+DIAOBJ   0,5,1,26,146,76,171,"","Task"
+DIAOBJ   0,6,3,21,53,86,78,"","RIG_ID"
+DIAOBJ   0,7,3,126,53,197,78,"","MONK_ID"
+DIAOBJ   0,8,2,22,76,84,101,"Rig_029","RIG_ID=RIG_029_ID;\r\nRIG_IS_SET = 1;\r\n"
+DIAOBJ   0,9,2,120,72,202,97,"Auto_Monk","MONK_ID=AUTO_ID;\r\nMONK_IS_SET = 1;"
+DIAOBJ   0,10,2,120,104,202,129,"Joule_01","MONK_ID=JOULE_ID;\r\nMONK_IS_SET = 1;\r\n"
+DIAOBJ   0,11,2,17,241,141,264,"Run CMD Task","quiet RUN_TASK = 1;\r\nquiet SHOW_PAGES = 0;\r\nquiet CALIBRATE_EYE = 0;\r\nquiet CALIBRATING = 0;\r\nstart;\r\nDPOP CMD_Task_Menu;"
+DIAOBJ   0,12,2,17,175,141,198,"Show Pages","SHOW_PAGES = 1;\r\nRUN_TASK = 0;\r\nstart;\r\n"
+DIAOBJ   0,13,2,17,208,141,231,"Calibrate Eye","quiet CALIBRATE_EYE =1;\r\nquiet CALIBRATING = 1;\r\nstart;"
+DIAOBJ   0,14,2,236,382,344,406,"Exit","quiet RUN_TASK = 0;\r\nquiet SHOW_PAGES = 0;\r\nquiet CALIBRATE_EYE = 0;\r\nquiet CALIBRATING = 0;\r\nstop;\r\nexit;\r\n"
+
+DIAPAGE 1,"Auto_Monk"
+DIAPOS   1,0,-1,-1,-1,-1,0,0,360,180,1
+DIAOBJ   1,0,2,272,15,336,37,"OK","DSET; DPOP"
+DIAOBJ   1,1,2,272,45,336,67,"Cancel","DPOP"
+
+; END OF DIALOGS
+

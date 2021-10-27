@@ -1,0 +1,211 @@
+06 Nov 2019
+
+- Fixes out-of-memory error when reverting large histories.
+- Fixes out-of-bounds regression when deleting or merging the last cluster.
+
+05 Nov 2019
+
+- Display a more useful message when failing to revert history changes.
+- Transient or Dependent properties are no longer saved or loaded from _res.mat.
+
+01 Nov 2019
+
+- New-style probe configurations are supported (alongside old-style).
+- Probe plot displays multishank probes in subplots.
+
+31 Oct 2019
+
+- Unit subset selection supported (annotated-only and non-annotated-only units so far). Use, e.g., "View > Display annotated units only" to enable.
+- Small bug fixes and performance improvements.
+
+10 Oct 2019
+
+- Phy-formatted SpyKING CIRCUS results can be imported with `jrc import-spyking-circus /path/to/phy/output/`.
+
+9 Oct 2019
+
+- Export of results struct to workspace now controlled by parameter `exportResults`.
+
+3 Sep 2019
+
+- Results can be exported to NWB format with jrc export-nwb /path/to/my/params.prm
+
+30 Aug 2019
+
+- Autodelete implemented for TemplateClustering.
+
+29 Aug 2019
+
+- Splitting from FigProj selects all spikes, not just plotted spikes, within polygon.
+
+25 Jul 2019
+
+- Revamp history mechanism.
+
+4 Apr 2019
+
+- Kilosort importer reads from NPY files instead of rez.mat (npy-matlab is required for this feature)
+- spikesRaw and spikesFilt are written to disk as they are computed, rather than all at once, to save memory (restores v3 behavior)
+- removes JRC/saveBinaries due to the above
+- New parameter: extractAfterDetect allows you to specify whether you want your features computed after ALL spikes are detected or on a per-chunk, per-file basis.
+
+29 Mar 2019 (4.0.0-beta release)
+
+- Allow user to select exploratory clustering algorithm in main split.
+- Allow user to split in FigProj.
+- hClust is no longer saved to _res.mat. Now all fields are available without having a copy of JRCLUST installed.
+
+27 Mar 2019
+
+- Bugfix: non-integral sample rates are supported to full precision.
+- Export results in phy-compatible format with jrc export-phy /path/to/your/config.prm.
+- Display summaries after detect and sort, also added an option to display a summary in UI.
+
+20 Mar 2019
+
+- Bugfix: import-ksort didn't use the correct sites for imported spikes; this has been fixed.
+
+Several small bug fixes.
+
+19 Mar 2019
+
+- New split mechanism (allows for multiple splits).
+- Users can press g in the waveform view to go to a specific cluster.
+- Bugfix: raw traces in chunks 2:end were being extracted nSamplesPad later than they were supposed to; this has been fixed.
+
+12 Mar 2019
+
+- Intan traditional recordings are now supported (but experimental; please report issues reading your Intan files).
+- Users can press q in the waveform view to display quality scores for the selected cluster.
+  Pressing SHIFT-Q will also export them to the workspace.
+
+Several small bug fixes.
+
+13 Feb 2019
+# mToStruct
+- throws a warning if eval/parse fails
+
+# import.v3 (formerly import.importv3)
+- updates clusterCenters on import to be consistent with nClusters
+- checks for hClust consistency on import
+
+12 Feb 2019
+# Parameters
+- evtGroupRad introduced
+- evtMergeRad (formerly maxDist_site_merge_um) (re)implemented to correct an error in parameter usage
+- selection of evtDetectRad, evtGroupRad, or evtMergeRad as the parameter of choice has been corrected in some places
+- exact usage of nSitesExcl clarified in docs
+- nPassesMerge had reported an incorrect default value in the docs; this has been fixed
+
+# JRC
+- hCfg is now a hidden attribute but publicly settable
+- `compile` command is now (re)implemented
+- `auto` is now `recluster`
+- steps in pipeline have been broken out into their own functions (run calls each in turn)
+- saveRes and saveBinaries are separate functions
+- saveRes can be called with a forceOverwrite parameter
+- user is warned if spikesRaw, spikesFilt, spikeFeatures are empty on load
+
+# Config
+- automatically set to error if rawRecordings is empty
+
+# Recording
+- supply a more helpful error message if nSamples is not an integer
+
+# DetectController
+- check for error in hRec before trying to detect
+- save rawShape, filtShape, featuresShape in detect()
+
+# metaToStruct
+- check given .meta file is a text file
+
+# help
+- now opens the RTD site or directs user to visit
+
+11 Feb 2019
+
+# Parameters
+- ignoreChans (formerly viChanZero) (re)implemented to address issue #83
+
+# Config
+- canonical version of ignoreSites was computed wrong in validation; this has been fixed
+
+# CurateController
+- "File > Save" menu callback crashed with "Too many input arguments" (see #86); this has been fixed
+
+7 Feb 2019
+
+# Parameters
+- a post-validation transform was erroneously applied to `freqLimNotch`; this has been fixed
+
+# planLoad
+- on non-Windows systems without GPUs (i.e., where no memory information is available),
+  JRCLUST attempts to load the entire file, potentially crashing when the file is large;
+  this has been fixed
+
+# doBootstrap
+- double check for binary file if binary and meta filenames don't match
+
+# Config
+- glob expansion in bin files was resulting in nested cell arrays instead of files; this has been fixed
+
+# jrc
+- try-catch around hJRC creation resulting in useless error messages; this has been corrected
+
+6 Feb 2019
+
+Added an importer for JRCv3 _jrc.mat files.
+This can be used via `jrc importv3 /path/to/your/session_jrc.mat`
+
+# JRC
+- deprecate/warning was giving erroneous messages; this has been fixed
+
+# Config
+- make errors and warnings (if in dialogs) blocking
+- make fullParams a dependent property rather than recomputing it in different places
+- don't validate params if not given a filename in constructor
+- removed setters for `*Samp` (dependent) properties
+- check for Dependent status and membership in fullParams in setCustomProp
+- added pointer to param docs when exporting prm file
+
+# depWarn
+- make deprecation warnings blocking
+
+# jrc.json
+- added link to documentation
+- updated release to alpha-patch2
+
+5 Feb 2019
+
+# Parameters
+- `realignTraces` did not have a section field, causing crashes on `Config.save`; this has been fixed
+- change sections for various filtering params to "preprocessing" rather than "spike detection"
+# TracesController
+- spike highlights were not clearing after toggling spikes off; this has been fixed
+- annoying "Beginning/End of file" message triggered before reaching BOF/EOF; this has been fixed
+# PreviewController
+- spike highlights were not clearing after toggling spikes off; this has been fixed
+- annoying "Beginning/End of file" message triggered before reaching BOF/EOF; this has been fixed
+# Config
+- ignoreSites was indexed with ismember(siteMap, ignoreSites), potentially causing OOB errors; this has been fixed
+# various
+- replace `isfile` with `exist(., 'file') == 2` and `isdir` with `exist(., 'dir') == 7`
+- `exist` called without abs path returned false positives, leading to references to nonexistent files; this has been fixed
+
+4 Feb 2019
+
+# Parameters
+- `RDDetrendMode`: 'hidehiko' renamed to 'regress'
+- `realignTraces` was overlooked; this has been fixed
+- old2new parameter mapping moved into params.json
+- `deprecated` field (with supported/partially supported subfields) added to params.json
+# Config class
+- `validateProp` method failed to check default string values because MATLAB is weird about "" strings; this has been fixed
+- `save` method exported default params, not user-specified params; this has been fixed
+- `oldParamSet` made a dependent property
+- added `setCustomProp` method: Config no longer ignores params not found in the default set
+- added `deprecatedParams` property: check for deprecated status when calling `setCustomProp`
+- added `isV3Import` property: Config will export a new config file if this is true
+- `save` method exports custom properties if there are any
+# JRC class
+- `saveFiles` saved binaries (raw/filtered traces, features) on sort without detect; this has been fixed

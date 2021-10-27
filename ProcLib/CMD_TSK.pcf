@@ -1,0 +1,157 @@
+; TEMPO PROTOCOL CONFIGURATION FILE
+; Copyright 1997-2019 Reflective Computing.  All Rights Reserved.
+; This file was created by TEMPO and should not be edited directly by the user.
+; The commands in this file are undocumented and subject to change in future releases.
+; Tue Feb 05 12:28:15 2019
+; CLOAD CMD_TSK.pcf
+
+; tempow 16.10 Set 49.20   'ADMINf812203' connected to 'TEMPO1'
+; KPED 17.1 Set 49
+; KSRV 16.8 Set 49.20 (Server 'TEMPO1          ' running on computer '')
+; PCL 0.0     TEMPO 0.0
+; ANALOGRESOLUTION=16
+; WARNING=2
+; SPEED=1000.000000  PROSPEED=1000.000000  (100/100000 Sec/SampleSet)
+; ASETS=1(1)  CSETS=1(1)  ESETS=1(1)
+; ACHANNELS=8
+; CCHANNELS=0
+; ECHANNELS=2
+;
+;                          Protocol Usage of Kernel Resources
+;
+; Parameter       Limit          Used    Pct        Bytes/Total        Develop    Stable
+; -------------   -------     -------  -----        -----------        -------    ------
+; PROCESSES       =300             50    17%         2200/13200         =71        =53
+; INSTRUCTIONS    =1820           916    50%        16488/32760         =1146      =965
+; InstructionsXMS =20025          916     5%        16488/360448        =1146      =965
+; SYMBOLTABLE     =4000           636    16%         5088/32000         =748       =669
+; NametableXMS    =208896      177752    85%       177752/208896
+; NAMETABLE       =40894         9750    24%         9750/40894         =11471     =10263
+; DATABASES       =16               0     0%            0/960           =0         =0
+; ARRAYTABLE      =30000          146     0%          146/30000         =183       =151
+; ARRAYDATA       =30000128      4440     0%         4440/30000128      =5550      =4577
+; OBJECTS         =257              0     0%            0/11308         =0         =0
+;
+; PROTOCOL PROCESS CONTROL BLOCKS (XMS Instructions Caching ENABLED)
+; INSTRUCTIONS=1820,20024
+; Memory (bytes):  16488/32760 Conventional, 16488/360448 XMS
+; Server CPU Mhz  Empirical 3391.6    Theoretical 3400.0
+;
+;    STATE PROCESS  Longest  0.000ms   PC INST  MAX LONG     MS  MaxMS LongMS Bytes  Conventional        XMS      Loaded  uSec
+;   1 SUSP CLEAR_VDO                    0    0    0    0  0.000  0.000  0.000    16    notLoaded         2-17          0     0
+;   2 SUSP SET_DEFAULT_STIM_VARS        0    0    0    0  0.000  0.000  0.000   174    notLoaded        18-191         0     0
+;   3 SUSP SET_DEFAULT_COLORS                     0    0    0    0  0.000  0.000  0.000   520    notLoaded       192-711         0     0
+;   4 SUSP SET_CLR                      0    0    0    0  0.000  0.000  0.000    56    notLoaded       712-767         0     0
+;   5 SUSP GRAPHS                       0    0    0    0  0.000  0.000  0.000   440    notLoaded       768-1207        0     0
+;   6 SUSP GRAF_UPD8_EYE                0    0    0    0  0.000  0.000  0.000    70    notLoaded      1208-1277        0     0
+;   7 SUSP GRAF_UPD8_FIX                0    0    0    0  0.000  0.000  0.000   212    notLoaded      1278-1489        0     0
+;   8 SUSP GRAF_UPD8_TARG               0    0    0    0  0.000  0.000  0.000   696    notLoaded      1490-2185        0     0
+;   9 SUSP GRAF_HIDE_FIX_TARG           0    0    0    0  0.000  0.000  0.000    32    notLoaded      2186-2217        0     0
+;  10 SUSP GRAF_SHOW_FIX_TARG           0    0    0    0  0.000  0.000  0.000    32    notLoaded      2218-2249        0     0
+;  11 SUSP GRAF_SHOW_FIX_WIN            0    0    0    0  0.000  0.000  0.000    20    notLoaded      2250-2269        0     0
+;  12 SUSP GRAF_SHOW_FIX                0    0    0    0  0.000  0.000  0.000    96    notLoaded      2270-2365        0     0
+;  13 SUSP GRAF_SHOW_TARG               0    0    0    0  0.000  0.000  0.000    96    notLoaded      2366-2461        0     0
+;  14 SUSP DRW_RECT                     0    0    0    0  0.000  0.000  0.000   426    notLoaded      2462-2887        0     0
+;  15 SUSP CMD_PGS                      0    0    0    0  0.000  0.000  0.000  1498    notLoaded      2888-4385        0     0
+;  16 SUSP SET_SCRN                     0    0    0    0  0.000  0.000  0.000   276    notLoaded      4386-4661        0     0
+;  17 SUSP RIG_029                      0    0    0    0  0.000  0.000  0.000   270    notLoaded      4662-4931        0     0
+;  18 SUSP SET_RIG                      0    0    0    0  0.000  0.000  0.000    66    notLoaded      4932-4997        0     0
+;  19 SUSP AUTO_EYE                     0    0    0    0  0.000  0.000  0.000   310    notLoaded      4998-5307        0     0
+;  20 SUSP AUTO_EYE_GET_READY           0    0    0    0  0.000  0.000  0.000    48    notLoaded      5308-5355        0     0
+;  21 SUSP AUTO_EYE_FIX_ON              0    0    0    0  0.000  0.000  0.000   132    notLoaded      5356-5487        0     0
+;  22 SUSP AUTO_EYE_FIXATE              0    0    0    0  0.000  0.000  0.000   104    notLoaded      5488-5591        0     0
+;  23 SUSP AUTO_EYE_TARG_ON             0    0    0    0  0.000  0.000  0.000   152    notLoaded      5592-5743        0     0
+;  24 SUSP AUTO_EYE_TARG_ACQ            0    0    0    0  0.000  0.000  0.000   230    notLoaded      5744-5973        0     0
+;  25 SUSP AUTO_EYE_POS_ACQ_TARG        0    0    0    0  0.000  0.000  0.000   314    notLoaded      5974-6287        0     0
+;  26 SUSP AUTO_EYE_POS_MARCH           0    0    0    0  0.000  0.000  0.000   194    notLoaded      6288-6481        0     0
+;  27 SUSP AUTO_EYE_POS_RAND            0    0    0    0  0.000  0.000  0.000   148    notLoaded      6482-6629        0     0
+;  28 SUSP AUTO_EYE_POS_FIX             0    0    0    0  0.000  0.000  0.000   104    notLoaded      6630-6733        0     0
+;  29 SUSP AUTO_EYE_POS_FIX_WIDE        0    0    0    0  0.000  0.000  0.000   268    notLoaded      6734-7001        0     0
+;  30 SUSP AUTO_EYE_POS_TARG            0    0    0    0  0.000  0.000  0.000   220    notLoaded      7002-7221        0     0
+;  31 SUSP AUTO                         0    0    0    0  0.000  0.000  0.000   132    notLoaded      7222-7353        0     0
+;  32 SUSP JOULE                        0    0    0    0  0.000  0.000  0.000   452    notLoaded      7354-7805        0     0
+;  33 SUSP SET_MONK                     0    0    0    0  0.000  0.000  0.000    92    notLoaded      7806-7897        0     0
+;  34 SUSP WAIT_MU                      0    0    0    0  0.000  0.000  0.000   100    notLoaded      7898-7997        0     0
+;  35 SUSP SEND_EVT                     0    0    0    0  0.000  0.000  0.000    46    notLoaded      7998-8043        0     0
+;  36 SUSP QUE_TTL                      0    0    0    0  0.000  0.000  0.000   150    notLoaded      8044-8193        0     0
+;  37 SUSP SEND_TTL                     0    0    0    0  0.000  0.000  0.000   144    notLoaded      8194-8337        0     0
+;  38 SUSP WTCH_EYE                     0    0    0    0  0.000  0.000  0.000   722    notLoaded      8338-9059        0     0
+;  39 SUSP LOCATE_EYE                   0    0    0    0  0.000  0.000  0.000  1318    notLoaded      9060-10377       0     0
+;  40 SUSP COMPUTE_EYE_POS              0    0    0    0  0.000  0.000  0.000   670    notLoaded     10378-11047       0     0
+;  41 SUSP WTCH_SCHMITT                 0    0    0    0  0.000  0.000  0.000   382    notLoaded     11048-11429       0     0
+;  42 SUSP SET_CMD_TRL                  0    0    0    0  0.000  0.000  0.000   264    notLoaded     11430-11693       0     0
+;  43 SUSP PCK_TRL_TYP                  0    0    0    0  0.000  0.000  0.000   132    notLoaded     11694-11825       0     0
+;  44 SUSP SET_WINS                     0    0    0    0  0.000  0.000  0.000   992    notLoaded     11826-12817       0     0
+;  45 SUSP SET_CURR_STAT                0    0    0    0  0.000  0.000  0.000    40    notLoaded     12818-12857       0     0
+;  46 RUN  IDLE                         0    0    0    0  0.000  0.000  0.000  3080    notLoaded     12858-15937       0     0
+;  47 SUSP UPD8_MSG                     0    0    0    0  0.000  0.000  0.000    16    notLoaded     15938-15953       0     0
+;  48 SUSP CHECK_TARG_VERT_RFRSH        0    0    0    0  0.000  0.000  0.000    84    notLoaded     15954-16037       0     0
+;  49 SUSP INCREMENT_TRL_TARG_VRT_RF    0    0    0    0  0.000  0.000  0.000   106    notLoaded     16038-16143       0     0
+;  50 SUSP CHECK_TARG_ACQUIRED          0    0    0    0  0.000  0.000  0.000   344    notLoaded     16144-16487       0     0
+
+
+SPEED 1000
+
+; ANALOG TABLE SETTINGS
+;; ACHANNELS=8
+
+
+ACHANINFO 0
+
+
+; EVENT TABLE SETTINGS
+;; ECHANNELS=2
+
+
+ECHANINFO 0
+
+
+PLOAD CMD_TSK.PRO
+
+; DATABASES=16
+
+
+; WINDOW CONFIGURATION
+
+SCREENRES 1280,768,32,1,0,0
+MAINWND 1,0,0,-1,-1,1,0,555,52,0
+MSGWND 1,160,729,-1,-1,0,53,718,675,0
+STATUSWND 1,0,0,-1,-1,407,290,1257,734,0
+SHOW s 0
+
+CMDWND 1,160,729,-1,-1,0,675,405,732,0
+ANIMPAGE 0x1,1,0,729,-1,-1,719,5,1271,317,0
+ANIMVIEW 0,1,0,0,0,0,723,35,995,313,0
+ANIMVIEW 1,1,0,0,0,0,995,35,1267,313,1
+
+; DATABASES PAGES & VIEWS
+
+DBPCOLORS 0x0,0x0,0x0,0x0,0x0
+
+; END GRAPH CONFIGURATION
+
+DLOAD C:\\tempo\\ProcLib\\CMD_TSK.dcf
+DSHOW CMD_Task_Menu
+
+; BEGIN KEY DEFINITIONS
+
+KEY ALTE = EYE_ON_VDOSYNC = 1
+KEY ALTX = EYE_ON_VDOSYNC = 0
+KEY ALTC = CENTER_EYE_NOW = 1
+KEY INSERT = spawn JUICE_EXTRA
+KEY ALTQ = CALIBRATING = 0\; CALIBRATE_EYE = 0\; SHOW_PAGES = 0\;	
+
+; From old ALLPROSC.PCF
+; KEY F1 = dialog Info_and_StartClock
+; KEY ESC = dpop
+; KEY INSERT = spawn key_rewd
+; KEY ALTE = Eye_on_VDOSync = 1
+; KEY ALTX = Eye_on_VDOSync = 0
+; KEY ALTC = CenterEyeNow = 1
+; KEY F2 = dialog Choose_Task
+; KEY F3 = dialog Fixation_Main
+; KEY F4 = dialog In_Task_pane
+; KEY ALTS = spawn key_stim
+; KEY F12 = spawn key_stim
+
+; END KEY DEFINITIONS
