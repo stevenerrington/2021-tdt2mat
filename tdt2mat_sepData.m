@@ -2,8 +2,8 @@ clear all; clc
 
 % Get log and fine mat logged files
 ephysLog = importOnlineEphysLogMaster;
-dir.matFiles = 'S:\Users\Current Lab Members\Steven Errington\2021_DaJo\mat\';
-dir.outFiles = 'S:\Users\Current Lab Members\Steven Errington\2021_DaJo\mat2\';
+dir.matFiles = 'S:\Users\Current Lab Members\Steven Errington\archive\mat3\';
+dir.outFiles = 'S:\Users\Current Lab Members\Steven Errington\archive\mat2\';
 
 % Find all the sessions that have been logged, and find the number of total
 % sessions (/independent of the number of penetrations)
@@ -36,15 +36,14 @@ for sessionIdx = 1:length(uniqueSessionList)
     penLogIdx = find(sessionList == sessionIdx);
     
     %%% for each penetration
-    clear penTable
     for penIdx = 1:nPenetrations
         if strcmp(ephysLog.DMFC{penLogIdx(penIdx)},'1')
             sessionInfo.area = 'DMFC';
         elseif strcmp(ephysLog.dACC{penLogIdx(penIdx)},'1') |...
                 strcmp(ephysLog.vACC{penLogIdx(penIdx)},'1')
             sessionInfo.area = 'ACC';
-        end
-        
+        end        
+
         dataFilename = ephysLog.Session{penLogIdx(penIdx)};
         
         clear inputData
@@ -52,6 +51,7 @@ for sessionIdx = 1:length(uniqueSessionList)
         
         
         if penIdx == 1
+            clear Events
             Events = rmfield(inputData.Behavior,{'Value','Stopping'});
             fprintf('Saving behavioral data... \n');...
                 save('-v7.3', [dir.outFiles sessionName '-beh.mat'], 'Events', 'Eyes')
