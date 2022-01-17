@@ -1,0 +1,15 @@
+name: phy2
+dependencies:
+  - python=3.7
+  - pip
+  - numpy
+  - matplotlib
+  - scipy
+  - h5py
+  - pyqt
+  - dask
+  - cython
+  - pillow
+  - sklearn
+  - pip:
+    - phy

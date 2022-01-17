@@ -1,0 +1,90 @@
+{
+    "AmplitudeView": {
+      "amplitudes_type": "feature",
+      "auto_update": true,
+      "marker_size": 5.0
+    },
+    "ClusterScatterView": {
+      "auto_update": true,
+      "color_scheme": "firing_rate",
+      "marker_size": 1.0,
+      "size": "fr",
+      "size_log_scale": true,
+      "x_axis": "fr",
+      "x_axis_log_scale": false,
+      "y_axis": "depth",
+      "y_axis_log_scale": false
+    },
+    "ClusterView": {
+      "current_sort": [
+        "n_spikes",
+        "desc"
+      ]
+    },
+    "CorrelogramView": {
+      "auto_update": true,
+      "bin_size": 0.001,
+      "refractory_period": 0.002,
+      "uniform_normalization": false,
+      "window_size": 0.05
+    },
+    "FeatureView": {
+      "auto_update": true,
+      "feature_scaling": 1.0,
+      "fixed_channels": false,
+      "marker_size": 2.0
+    },
+    "FiringRateView": {
+      "auto_update": true,
+      "n_bins": 200,
+      "x_min": 0
+    },
+    "GUI_VERSION": 2,
+    "ISIView": {
+      "auto_update": true,
+      "n_bins": 50,
+      "x_max": 0.05,
+      "x_min": 0.0
+    },
+    "ProbeView": {
+      "auto_update": true,
+      "do_show_labels": false
+    },
+    "TraceView": {
+      "auto_scale": true,
+      "auto_update": true,
+      "color_scheme": "depth",
+      "do_show_labels": true,
+      "origin": "bottom",
+      "show_all_spikes": true
+    },
+    "WaveformView": {
+      "auto_update": true,
+      "do_show_labels": true,
+      "overlap": false,
+      "waveforms_type": "waveforms"
+    },
+    "batch_size_waveforms": 10,
+    "geometry_state": {
+      "geometry": {
+        "__qbytearray__": "QWRuUXl3QURBQUFBQUFCaC8vLy85d0FBQjRBQUFBUTRBQUFBMFFBQUFHa0FBQVdKQUFBQ3dBQUFBQUFDQUFBQUI0QUFBQUJpQUFBQUhRQUFCMzhBQUFRMw=="
+      },
+      "state": {
+        "__qbytearray__": "QUFBQS93QUFBQUQ5QUFBQUFnQUFBQUFBQUFFN0FBQUR4dndCQUFBQUFmd0FBQUFBQUFBQk93QUFBTlFBLy8vLy9BSUFBQUFEK3dBQUFDUUFRd0JzQUhVQWN3QjBBR1VBY2dCVEFHTUFZUUIwQUhRQVpRQnlBRllBYVFCbEFIY0JBQUFBUEFBQUFRRUFBQUF3QVAvLy8vc0FBQUFXQUVNQWJBQjFBSE1BZEFCbEFISUFWZ0JwQUdVQWR3RUFBQUZDQUFBQnZBQUFBQ3dBLy8vLyt3QUFBQndBVXdCcEFHMEFhUUJzQUdFQWNnQnBBSFFBZVFCV0FHa0FaUUIzQVFBQUF3TUFBQUQvQUFBQUxBRC8vLzhBQUFBQkFBQUYzZ0FBQThiOEFRQUFBQVQ4QUFBQlFBQUFBVmdBQUFDK0FQLy8vL3dDQUFBQUF2c0FBQUFZQUZjQVlRQjJBR1VBWmdCdkFISUFiUUJXQUdrQVpRQjNBUUFBQUR3QUFBTHdBQUFBTUFELy8vLzdBQUFBR2dCQkFHMEFjQUJzQUdrQWRBQjFBR1FBWlFCV0FHa0FaUUIzQVFBQUF6RUFBQURSQUFBQU1BRC8vLy84QUFBQ25RQUFBZVlBQUFGVkFQLy8vL3dDQUFBQUJQc0FBQUFXQUVZQVpRQmhBSFFBZFFCeUFHVUFWZ0JwQUdVQWR3RUFBQUE4QUFBQjRRQUFBREFBLy8vLyt3QUFBQ1lBVkFCbEFHMEFjQUJzQUdFQWRBQmxBRVlBWlFCaEFIUUFkUUJ5QUdVQVZnQnBBR1VBZHdFQUFBR3JBQUFBNWdBQUFBQUFBQUFBK3dBQUFCNEFRd0J2QUhJQWNnQmxBR3dBYndCbkFISUFZUUJ0QUZZQWFRQmxBSGNCQUFBQ0lnQUFBUXNBQUFBd0FQLy8vL3dBQUFNeUFBQUEwQUFBQURBQS8vLy8vQUVBQUFBQyt3QUFBQTRBU1FCVEFFa0FWZ0JwQUdVQWR3RUFBQUtkQUFBQTBnQUFBSk1BLy8vLyt3QUFBQndBUmdCcEFISUFhUUJ1QUdjQVVnQmhBSFFBWlFCV0FHa0FaUUIzQVFBQUEzUUFBQUVQQUFBQXZRRC8vLy83QUFBQUVnQlVBSElBWVFCakFHVUFWZ0JwQUdVQWR3RUFBQVNJQUFBQjVRQUFBUzBBLy8vLyt3QUFBQklBVUFCeUFHOEFZZ0JsQUZZQWFRQmxBSGNCQUFBR2NnQUFBS3dBQUFDa0FQLy8vd0FBQUFBQUFBUEdBQUFBQkFBQUFBUUFBQUFJQUFBQUNQd0FBQUFCQUFBQUFnQUFBQUVBQUFBT0FGUUFid0J2QUd3QVlnQmhBSElCQUFBQUFQLy8vLzhBQUFBQUFBQUFBQT09"
+      }
+    },
+    "n_spikes_waveforms": 100,
+    "view_count": {
+      "AmplitudeView": 1,
+      "ClusterScatterView": 1,
+      "ClusterView": 1,
+      "CorrelogramView": 1,
+      "FeatureView": 1,
+      "FiringRateView": 1,
+      "ISIView": 1,
+      "ProbeView": 1,
+      "SimilarityView": 1,
+      "TraceView": 1,
+      "WaveformView": 1
+    }
+  }
