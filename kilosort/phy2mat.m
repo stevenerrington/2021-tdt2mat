@@ -19,13 +19,16 @@ wf = getWaveForms(gwfparams);
 
 
 %% Setup variable space for spike and waveform data
-unitList = unique(sp.clu);
+% Note: I've checked and it seems as though noise clusters are dropped from
+% the import, and we don't need to include/exclude them manually.
+
+unitList = double(unique(sp.clu));
 nUnits = length(unitList);
 % Find site for each ID'd cluster
 for unitIdx = 1:nUnits
     unit = unitList(unitIdx);
     cluster(unitIdx,1) = unit;
-    site(unitIdx,1) = spikeSites(find(sp.clu == unit,1));
+    site(unitIdx,1) = double(mode(spikeSites(sp.clu == unit)));
 end
 
 % Get labels for the output (e.g. DSP01a, WAV01a = first unit on ch 1)
@@ -46,7 +49,7 @@ spkTable = sortrows(spkTable,'site');
 
 for unitIdx = 1:nUnits
     unit = spkTable.cluster(unitIdx);
-    spikes.time.(spkTable.unitDSP{unitIdx}) = round(spikeTimes(sp.clu == unit)*(24414.14/1000));
+    spikes.time.(spkTable.unitDSP{unitIdx}) = round((spikeTimes(sp.clu == unit)./24414.14).*1000);
     spikes.amplitudes.(spkTable.unitDSP{unitIdx}) = spikeAmps(sp.clu == unit);
 end
 
@@ -60,11 +63,9 @@ end
 
 for unitIdx = 1:nUnits
     unit = spkTable.cluster(unitIdx);
-    spikes.waveform.(spkTable.unitWAV{unitIdx}) = squeeze(wf.waveForms(unitIdx,:,spikeSites(find(sp.clu == unit,1)),:));
-    spikes.waveform_spkTime.(spkTable.unitWAV{unitIdx}) = wf.spikeTimeKeeps(unitIdx,:)*(24414.14/1000);
+    spikes.waveform.(spkTable.unitWAV{unitIdx}) =...
+        squeeze(wf.waveForms(wf.unitIDs == unit,:,spkTable.site(unitIdx),:));
+    
+    spikes.waveform_spkTime.(spkTable.unitWAV{unitIdx}) =...
+        round((wf.spikeTimeKeeps(wf.unitIDs == unit,:)./24414.14).*1000);
 end
-
-
-
-
-

@@ -1,14 +1,14 @@
-function [SDF] = alignSDF(trialEventTimes, Infos, spkTimes, timeWin)
+function [SDF] = alignSDF_old(trialEventTimes, Infos, tdtSpk, timeWin)
 
-names = fieldnames( spkTimes );
+names = fieldnames( tdtSpk );
 subStr = 'DSP';
-DSPstruct = rmfield( spkTimes, names( find( cellfun( @isempty, strfind( names , subStr ) ) ) ) );
+DSPstruct = rmfield( tdtSpk, names( find( cellfun( @isempty, strfind( names , subStr ) ) ) ) );
 DSPnames = fieldnames(DSPstruct);
 
 for DSPidx = 1:length(DSPnames)
     DSPlabel = DSPnames{DSPidx};
     
-    SessionSDF = SpkConvolver (spkTimes.(DSPlabel), round(max(Infos.InfosEnd_)+10000), 'PSP');
+    SessionSDF = SpkConvolver (tdtSpk.(DSPlabel), round(max(Infos.InfosEnd_)+10000), 'PSP');
     
     eventNames = fieldnames(trialEventTimes);
     eventNames = eventNames(1:length(eventNames)-3);

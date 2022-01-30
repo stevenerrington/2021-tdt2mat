@@ -16,7 +16,7 @@ ephysLog = ephysLog(strcmp(ephysLog.UseFlag,'?') | strcmp(ephysLog.UseFlag,'1'),
 sessionList = cellfun(@str2num,ephysLog.SessionN);
 uniqueSessionList = unique(sessionList);
 
-for recordingIdx = 2:size(ephysLog,1)
+for recordingIdx = 60 % 2:size(ephysLog,1)
     
     fprintf('Analysing electrode %i of %i | %s.          \n',...
         recordingIdx,size(ephysLog,1),ephysLog.Session{recordingIdx});
@@ -57,7 +57,7 @@ for recordingIdx = 2:size(ephysLog,1)
         tdt_ks_config                % Define kilosort parameters for analysis (separate script)
         
         %% Run Kilosort functions
-        try
+%         try
             rez                = preprocessDataSub(ops);
             rez                = datashift2(rez, 1); % last input is for shifting data
             rez                = learnAndSolve8b(rez, 1); % main tracking and template matching algorithm
@@ -68,9 +68,9 @@ for recordingIdx = 2:size(ephysLog,1)
             
             %% Output Kilosort to Phy
             rezToPhy(rez, ops.rootZ);
-        catch
-            continue
-        end
+%         catch
+%             continue
+%         end
         
     end
 end
