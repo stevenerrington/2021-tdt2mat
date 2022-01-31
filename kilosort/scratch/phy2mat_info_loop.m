@@ -16,8 +16,9 @@ ephysLog = ephysLog(strcmp(ephysLog.UseFlag,'?') | strcmp(ephysLog.UseFlag,'1'),
 % Get usable session IDs for looping
 sessionList = cellfun(@str2num,ephysLog.SessionN);
 uniqueSessionList = unique(sessionList);
+spkTable_all = table();
 
-parfor logIdx = 1:size(ephysLog,1)
+for logIdx = 1:size(ephysLog,1)
     try
         fprintf('Analysing electrode %i of %i | %s.          \n',...
             logIdx,size(ephysLog,1),ephysLog.Session{logIdx});
@@ -38,10 +39,10 @@ parfor logIdx = 1:size(ephysLog,1)
         ops.fs                  = 24414.14;
         ops.nChan               = 32;
         
-        [spikes] = phy2mat(ops);
-        
-        spk_file = ephysLog.Session{logIdx};
-        parsave_spks([dataDir spk_file '-spk.mat'], spikes);
+        [spkTable] = phy2mat_infoOut(ops);      
+        session = repmat({session}, size(spkTable,1),1);
+        spkTable.cluster = session;
+        spkTable_all = [spkTable_all; spkTable];
         
     catch
         fprintf('            ERROR: %i of %i | %s.          \n',...

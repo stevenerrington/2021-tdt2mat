@@ -3,10 +3,12 @@ function [spikes] = phy2mat(ops)
 sp = loadKSdir(ops.rootZ);
 [spikeTimes, spikeAmps, ~, spikeSites] = ksDriftmap(ops.rootZ);
 
+clusterInfo_in = tdfread(['S:\Users\Current Lab Members\Steven Errington\2021_DaJo\spk\'...
+    ephysLog.Session{logIdx} '\cluster_info.tsv']);
 %% Waveform extraction
 %  Get Parameters
 gwfparams.dataDir = ops.rootZ;           % KiloSort/Phy output folder
-gwfparams.fileName = '\temp_wh.dat';     % .dat file containing the raw 
+gwfparams.fileName = '\temp_wh.dat';     % .dat file containing the raw
 gwfparams.dataType = 'int16';            % Data type of .dat file (this should be BP filtered)
 gwfparams.nCh = 32;                      % Number of channels that were streamed to disk in .dat file
 gwfparams.wfWin = [-40 41];              % Number of samples before and after spiketime to include in waveform
@@ -33,12 +35,12 @@ end
 
 % Get labels for the output (e.g. DSP01a, WAV01a = first unit on ch 1)
 for unitIdx = 1:nUnits
-      unit_site = find(unitIdx == find(site == site(unitIdx,1)));
-      dspString = num2str(site(unitIdx,1),'DSP%02i');
-      wavString = num2str(site(unitIdx,1),'WAV%02i');
-      clustLetter = char(unit_site+96); % 97 is the char code for 'a"
-      unitDSP{unitIdx,1} = [dspString clustLetter];
-      unitWAV{unitIdx,1} = [wavString clustLetter];
+    unit_site = find(unitIdx == find(site == site(unitIdx,1)));
+    dspString = num2str(site(unitIdx,1),'DSP%02i');
+    wavString = num2str(site(unitIdx,1),'WAV%02i');
+    clustLetter = char(unit_site+96); % 97 is the char code for 'a"
+    unitDSP{unitIdx,1} = [dspString clustLetter];
+    unitWAV{unitIdx,1} = [wavString clustLetter];
 end
 
 spkTable = table(cluster,site,unitDSP,unitWAV);

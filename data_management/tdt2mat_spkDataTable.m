@@ -72,6 +72,10 @@ for logIdx = 1:size(ephysLog,1)
             
         end
         
+
+        readtable(['S:\Users\Current Lab Members\Steven Errington\2021_DaJo\spk\'...
+            ephysLog.Session{logIdx} '\cluster_info.tsv'])
+        
         sessionName = repmat(ephysLog.Session(str2num(ephysLog.SessionN{logIdx})),length(clusters.dsp),1);
         sessionIdx = repmat(str2num(ephysLog.SessionN{logIdx}),length(clusters.dsp),1);
         logIdxN =  repmat(logIdx,length(clusters.dsp),1);
