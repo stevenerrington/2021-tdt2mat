@@ -1,6 +1,5 @@
 function ephysLog = importOnlineEphysLogMaster()
-
-sessionSheet = GetGoogleSpreadsheet('1pId2_DS36-fjQuQHEXPhR_HJVDHZGRswDG_t21qVeD4');
+sessionSheet = GetGoogleSpreadsheet('163v9YjcDqLu0V7RTkosaXIiW68eBbvZKFsRTO3CyquU');
 ephysLog = cell2table(sessionSheet(2:end,:),'VariableNames',sessionSheet(1,:));
 
 

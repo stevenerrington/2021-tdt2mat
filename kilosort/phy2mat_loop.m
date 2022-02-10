@@ -16,8 +16,9 @@ ephysLog = ephysLog(strcmp(ephysLog.UseFlag,'?') | strcmp(ephysLog.UseFlag,'1'),
 % Get usable session IDs for looping
 sessionList = cellfun(@str2num,ephysLog.SessionN);
 uniqueSessionList = unique(sessionList);
+spkTable = table();
 
-parfor logIdx = 1:size(ephysLog,1)
+for logIdx = 1:size(ephysLog,1)
     try
         fprintf('Analysing electrode %i of %i | %s.          \n',...
             logIdx,size(ephysLog,1),ephysLog.Session{logIdx});
@@ -37,14 +38,23 @@ parfor logIdx = 1:size(ephysLog,1)
         ops.nt0                 = 61; % length of samples for waveform data?
         ops.fs                  = 24414.14;
         ops.nChan               = 32;
+        ops.sessionName         = ephysLog.Session{logIdx};
+%         
+%         % Save main spike out
+%         [spikes] = phy2mat(ops);
+%         spk_file = ephysLog.Session{logIdx};
+%         parsave_spks([dataDir spk_file '-spk.mat'], spikes);
         
-        [spikes] = phy2mat(ops);
-        
-        spk_file = ephysLog.Session{logIdx};
-        parsave_spks([dataDir spk_file '-spk.mat'], spikes);
+        % Get spk sort data quality metrics
+        [spkTable_idx] = phyinfo2mat(ops);  
+        spkTable = [spkTable; spkTable_idx];
         
     catch
         fprintf('            ERROR: %i of %i | %s.          \n',...
             logIdx,size(ephysLog,1),ephysLog.Session{logIdx});
     end
 end
+
+    writetable(spkTable,...
+        ['S:\Users\Current Lab Members\Steven Errington\temp\dajo_datacuration\'...
+        '2021-dajo-spksort.csv'],'WriteRowNames',true)

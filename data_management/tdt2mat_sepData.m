@@ -14,22 +14,6 @@ uniqueSessionList = unique(sessionList);
 % For each session, loop through and collate the relevant details.
 for sessionIdx = 1:length(uniqueSessionList)
     
-    % Print statement to show progress in loop
-    fprintf('Analysing session %i of %i | %s.          \n',...
-        sessionIdx,length(uniqueSessionList),ephysLog.Session{sessionIdx});
-    
-    % Get session related information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%% monkey
-    if strcmp(ephysLog.Monkey{sessionIdx},'Jo'); sessionInfo.monkey = 'joule';
-    elseif strcmp(ephysLog.Monkey{sessionIdx},'Da'); sessionInfo.monkey = 'darwin';
-    end
-    %%% date:
-    sessionInfo.date = datestr(ephysLog.Date{sessionIdx},'yyyymmdd');
-    %%% task:
-    sessionInfo.task = 'cmand1DR';
-    %%% generate overall label for session
-    sessionName = [sessionInfo.monkey(1:3) '-' sessionInfo.task '-' sessionInfo.date];
-    
     %%%% Neurophysiology information %%%%
     %%% number of penetrations
     nPenetrations = sum(sessionList == sessionIdx);
@@ -37,24 +21,42 @@ for sessionIdx = 1:length(uniqueSessionList)
     
     %%% for each penetration
     for penIdx = 1:nPenetrations
+        
+        % Print statement to show progress in loop
+        fprintf('Analysing session %i of %i | %s.          \n',...
+            sessionIdx,length(uniqueSessionList),ephysLog.Session{penLogIdx(penIdx)});
+        
+        % Get session related information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%% monkey
+        if strcmp(ephysLog.Monkey{penLogIdx(penIdx)},'Jo'); sessionInfo.monkey = 'joule';
+        elseif strcmp(ephysLog.Monkey{penLogIdx(penIdx)},'Da'); sessionInfo.monkey = 'darwin';
+        end
+        %%% date:
+        sessionInfo.date = datestr(ephysLog.Date{penLogIdx(penIdx)},'yyyymmdd');
+        %%% task:
+        sessionInfo.task = 'cmand1DR';
+        %%% generate overall label for session
+        sessionName = [sessionInfo.monkey(1:3) '-' sessionInfo.task '-' sessionInfo.date];
+        
+
         if strcmp(ephysLog.DMFC{penLogIdx(penIdx)},'1')
             sessionInfo.area = 'DMFC';
         elseif strcmp(ephysLog.dACC{penLogIdx(penIdx)},'1') |...
                 strcmp(ephysLog.vACC{penLogIdx(penIdx)},'1')
             sessionInfo.area = 'ACC';
-        end        
-
+        end
+        
         dataFilename = ephysLog.Session{penLogIdx(penIdx)};
         
         clear inputData
         inputData = load([dir.matFiles dataFilename '.mat']);
         
-        
         if penIdx == 1
             clear Events
-            Events = rmfield(inputData.Behavior,{'Value','Stopping'});
+            eyes = inputData.Eyes;
+            events = rmfield(inputData.Behavior,{'Value','Stopping'});
             fprintf('Saving behavioral data... \n');...
-                save('-v7.3', [dir.outFiles sessionName '-beh.mat'], 'Events', 'Eyes')
+                save('-v7.3', [dir.outFiles sessionName '-beh.mat'], 'events', 'eyes')
         end
         
         if isfield(inputData,'EEG')
@@ -66,10 +68,6 @@ for sessionIdx = 1:length(uniqueSessionList)
         clear lfp; lfp = inputData.LFP;
         fprintf('Saving LFP data... \n');...
             save('-v7.3', [dir.outFiles dataFilename '-lfp.mat'], 'lfp')
-        
-        clear spk; spk = inputData.Spikes;
-        fprintf('Saving SPK data... \n');...
-            save('-v7.3', [dir.outFiles dataFilename '-spk.mat'], 'spk')        
         
     end
     

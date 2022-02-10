@@ -3,8 +3,6 @@ function [spikes] = phy2mat(ops)
 sp = loadKSdir(ops.rootZ);
 [spikeTimes, spikeAmps, ~, spikeSites] = ksDriftmap(ops.rootZ);
 
-clusterInfo_in = tdfread(['S:\Users\Current Lab Members\Steven Errington\2021_DaJo\spk\'...
-    ephysLog.Session{logIdx} '\cluster_info.tsv']);
 %% Waveform extraction
 %  Get Parameters
 gwfparams.dataDir = ops.rootZ;           % KiloSort/Phy output folder
