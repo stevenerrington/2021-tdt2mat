@@ -1,7 +1,7 @@
 function tdtLFP = alignLFP(trialEventTimes,tdtLFP, alignmentWindow)
 
 fnames = fieldnames(trialEventTimes);
-alignmentEvents = fnames(1:6);
+alignmentEvents = fnames(1:length(fnames)-3);
 nEvents = length(alignmentEvents);
 
 channelNames = fieldnames(tdtLFP.data);

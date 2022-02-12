@@ -27,7 +27,7 @@ for logIdx = 1:size(ephysLog,1)
         session = ephysLog.Session{logIdx};
         sessionAnalysisDir = fullfile(dirs.processDataStore,session);
         
-        ops = struct();        
+        ops = struct();
         ops.dataDir             = fullfile(dirs.rawDataStore);
         ops.datatype            = 'bin';  % This code is taking .sev data and will convert it to .bin/.dat
         ops.root                = sessionAnalysisDir;
@@ -39,14 +39,14 @@ for logIdx = 1:size(ephysLog,1)
         ops.fs                  = 24414.14;
         ops.nChan               = 32;
         ops.sessionName         = ephysLog.Session{logIdx};
-%         
-%         % Save main spike out
-%         [spikes] = phy2mat(ops);
-%         spk_file = ephysLog.Session{logIdx};
-%         parsave_spks([dataDir spk_file '-spk.mat'], spikes);
+        
+        % Save main spike out
+        [spikes] = phy2mat(ops);
+        spk_file = ephysLog.Session{logIdx};
+        parsave_spks([dataDir spk_file '-spk.mat'], spikes);
         
         % Get spk sort data quality metrics
-        [spkTable_idx] = phyinfo2mat(ops);  
+        [spkTable_idx] = phyinfo2mat(ops);
         spkTable = [spkTable; spkTable_idx];
         
     catch
@@ -55,6 +55,6 @@ for logIdx = 1:size(ephysLog,1)
     end
 end
 
-    writetable(spkTable,...
-        ['S:\Users\Current Lab Members\Steven Errington\temp\dajo_datacuration\'...
-        '2021-dajo-spksort.csv'],'WriteRowNames',true)
+writetable(spkTable,...
+    ['S:\Users\Current Lab Members\Steven Errington\temp\dajo_datacuration\'...
+    '2021-dajo-spksort.csv'],'WriteRowNames',true)
