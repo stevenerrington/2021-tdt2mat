@@ -82,7 +82,7 @@ no_stopSignal_trls = find(isnan(trialEventTimes.stopSignal));
 for trlIdx = 1:length(no_stopSignal_trls)
     trl = no_stopSignal_trls(trlIdx);
     
-    trialEventTimes.ssd(trl) = ...
+    trialEventTimes.stopSignal_artifical(trl) = ...
         trialEventTimes.target(trl) + ... % Get the target time (as it's NaN for no target, we won't get a value).
         round(stateFlags.LastSsdIdx(trl)*(1000/60)); % ... add the SSD (ms) from the previous stop trial
     

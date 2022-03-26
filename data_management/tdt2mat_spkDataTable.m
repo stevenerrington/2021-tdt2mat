@@ -71,11 +71,18 @@ for logIdx = 1:size(ephysLog,1)
             
             
         end
-        
-
-        readtable(['S:\Users\Current Lab Members\Steven Errington\2021_DaJo\spk\'...
-            ephysLog.Session{logIdx} '\cluster_info.tsv'])
-        
+%         
+% 
+%         ks_clusterInfo = tdfread(['S:\Users\Current Lab Members\Steven Errington\2021_DaJo\spk\'...
+%             ephysLog.Session{logIdx} '\cluster_info.tsv']);
+%         
+%         ks_validNeurons = find(strcmp(cellstr(ks_clusterInfo.group),'good'));
+%         
+%         ks_contamPct = ks_clusterInfo.ContamPct(ks_validNeurons);
+%         ks_fr = ks_clusterInfo.fr(ks_validNeurons);
+%         ks_amp = ks_clusterInfo.amp(ks_validNeurons);
+%         
+%         
         sessionName = repmat(ephysLog.Session(str2num(ephysLog.SessionN{logIdx})),length(clusters.dsp),1);
         sessionIdx = repmat(str2num(ephysLog.SessionN{logIdx}),length(clusters.dsp),1);
         logIdxN =  repmat(logIdx,length(clusters.dsp),1);

@@ -49,3 +49,6 @@ for logIdx = 1:size(ephysLog,1)
             logIdx,size(ephysLog,1),ephysLog.Session{logIdx});
     end
 end
+
+
+writetable(spkTable_all,['S:\Users\Current Lab Members\Steven Errington\temp\dajo_spikeData.csv']);
