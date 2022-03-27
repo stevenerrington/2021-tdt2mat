@@ -18,7 +18,7 @@ sessionList = cellfun(@str2num,ephysLog.SessionN);
 uniqueSessionList = unique(sessionList);
 spkTable = table();
 
-for logIdx = 1:size(ephysLog,1)
+parfor logIdx = 1:size(ephysLog,1)
     try
         fprintf('Analysing electrode %i of %i | %s.          \n',...
             logIdx,size(ephysLog,1),ephysLog.Session{logIdx});
