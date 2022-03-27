@@ -7,6 +7,7 @@ dirs.rawDataStore = 'S:\Users\Current Lab Members\Steven Errington\temp\dajo_bin
 dirs.processDataStore = 'S:\Users\Current Lab Members\Steven Errington\2021_DaJo\spk';
 dirs.electrodeConfig = 'C:\Users\Steven\Desktop\2021-tdt2mat-main\kilosort\Kilosort-2.5\configFiles\';
 dataDir = 'S:\Users\Current Lab Members\Steven Errington\2021_DaJo\mat\';
+load('2021-dajo-datamap.mat')
 
 %% Get Session Information
 % Get Ephys log and tidy
@@ -18,7 +19,7 @@ sessionList = cellfun(@str2num,ephysLog.SessionN);
 uniqueSessionList = unique(sessionList);
 spkTable_all = table();
 
-parfor logIdx = 1:size(ephysLog,1)
+for logIdx = 1:size(ephysLog,1)
     try
         fprintf('Analysing electrode %i of %i | %s.          \n',...
             logIdx,size(ephysLog,1),ephysLog.Session{logIdx});
@@ -31,7 +32,7 @@ parfor logIdx = 1:size(ephysLog,1)
         ops.root                = sessionAnalysisDir;
         ops.rootZ               = fullfile(ops.root);
         ops.fs                  = 24414.14;
-        ops.nChan               = 32;
+        ops.nChan               = 32;        
         
         [spkTable] = phy2mat_infoOut(ops);      
         session = repmat({session}, size(spkTable,1),1);

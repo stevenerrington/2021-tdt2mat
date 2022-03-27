@@ -8,6 +8,7 @@ dir_mat = 'S:\Users\Current Lab Members\Steven Errington\2021_DaJo\mat\';
 
 % Define unit of interest (manually defined after looking at SDFs)
 chan = 12; unit = 'a'; label = ['DSP' int2str(chan) unit];
+chan = 23; unit = 'a'; label = ['DSP' int2str(chan) unit];
 
 % Load raw and processed data
 data_raw = TDTbin2mat([dir_tdt sessionName_tdt], ...
@@ -58,13 +59,27 @@ ylim([-12000 6000])
 xlim([20 80])
 
 
-
-
-
-
 %%
 spkwidth_data = readtable('S:\Users\Current Lab Members\Steven Errington\temp\dajo_datacuration\2021-dajo-spkLabels.csv');
 
 figure('Renderer', 'painters', 'Position', [100 100 500 250]);
 histogram(spkwidth_data.wf_width,0:25:750,'DisplayStyle','Stairs')
 vline(250,'r--')
+
+
+%% 
+% 
+% data_raw_all = TDTbin2mat([dir_tdt sessionName_tdt], ...
+%     'STORE', 'Wav1', 'T1', 1000, 'T2', 1010);
+% 
+% 
+% figure('Renderer', 'painters', 'Position', [100 100 500 800]);
+% for ch = 1:32
+% plot(data_raw_all.streams.Wav1.data(ch,(1:length(data_raw_all.streams.Wav1.data(ch,:))/2))+0.25*ch,'k','LineWidth',0.01)
+%     hold on
+%     
+%     xlim([0 length(data_raw_all.streams.Wav1.data(ch,:))/2])
+% end
+% 
+% set(gca,'YDir','Reverse')
+% 
