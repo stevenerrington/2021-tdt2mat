@@ -19,7 +19,7 @@ nUnits = length(unitList);
 % Find site for each ID'd cluster
 for unitIdx = 1:nUnits
     unit = unitList(unitIdx);
-    cluster(unitIdx,1) = unit;
+    ks_cluster(unitIdx,1) = unit;
     site(unitIdx,1) = double(mode(spikeSites(sp.clu == unit)));
 end
 
@@ -38,11 +38,11 @@ for unitIdx = 1:nUnits
     
     
     nSpikes(unitIdx,1) = length(spkTimes);
-    ISIinfraction_2ms(unitIdx,1) = (mean(ISI < 2))*100;
-    ISIinfraction_2_4ratio(unitIdx,1) = sum(ISI < 2)/sum(ISI >= 2 & ISI <= 4);
-    contamPct(unitIdx,1) = ks_contamPct.ContamPct(ks_contamPct.cluster_id ==  cluster(unitIdx,1),:);
-    amplitude(unitIdx,1) = ks_clusterAmp.Amplitude(ks_clusterAmp.cluster_id ==  cluster(unitIdx,1),:);
-    ksClass{unitIdx,1} = ks_classification.KSLabel(ks_classification.cluster_id ==  cluster(unitIdx,1),:);
+    ISI_2ms(unitIdx,1) = (mean(ISI < 2))*100;
+    ISI_2_4_ratio(unitIdx,1) = sum(ISI < 2)/sum(ISI >= 2 & ISI <= 4);
+    contamPct(unitIdx,1) = ks_contamPct.ContamPct(ks_contamPct.cluster_id ==  ks_cluster(unitIdx,1),:);
+    amplitude(unitIdx,1) = ks_clusterAmp.Amplitude(ks_clusterAmp.cluster_id ==  ks_cluster(unitIdx,1),:);
+    ksClass{unitIdx,1} = ks_classification.KSLabel(ks_classification.cluster_id ==  ks_cluster(unitIdx,1),:);
    
     
 %     
@@ -51,6 +51,6 @@ for unitIdx = 1:nUnits
 %     ksClass{unitIdx,1} = {clusterInfo_phy.KSLabel(clusterInfo_phy.cluster_id ==  cluster(unitIdx,1),:)};
 end
 
-spkTable = table(cluster,site,unitDSP,unitWAV,contamPct,amplitude,ksClass,nSpikes,ISIinfraction_2ms,ISIinfraction_2_4ratio);
+spkTable = table(ks_cluster,site,unitDSP,unitWAV,contamPct,amplitude,ksClass,nSpikes,ISI_2ms,ISI_2_4_ratio);
 spkTable = sortrows(spkTable,'site');
 

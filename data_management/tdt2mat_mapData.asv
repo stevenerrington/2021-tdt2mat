@@ -118,7 +118,7 @@ for sessionLoopIdx = 1:length(uniqueSessionList)
             
             spkLog = importOnlineSpkCuration();
             spkLog_idx_session = [];
-            spkLog_idx_session = find(strcmp(spkLog.Session,ephysLog.Session{penLogIdx(penIdx)}) == 1);
+            spkLog_idx_session = find(strcmp(spkLog.Session,ephysLog.Session{sessionIdx}) == 1);
             
             spkInfo.unitInfo.flag_mua = cellfun(@str2num,spkLog.muaFlag(spkLog_idx_session));
             spkInfo.unitInfo.flag_noise = cellfun(@str2num,spkLog.noiseFlag(spkLog_idx_session));     

@@ -5,8 +5,6 @@ dirs.masterData = 'S:\DATA\Current Subjects';
 %% Get Session Information
 % Get Ephys log and tidy
 ephysLog = importOnlineEphysLogMaster;
-ephysLog = ephysLog(str2num(cell2mat((ephysLog.DataLogFlag))) == 1,:);
-ephysLog = ephysLog(strcmp(ephysLog.UseFlag,'?') | strcmp(ephysLog.UseFlag,'1'),:);
 
 % Get usable session IDs for looping
 sessionList = cellfun(@str2num,ephysLog.SessionN);
