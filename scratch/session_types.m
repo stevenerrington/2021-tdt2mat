@@ -29,7 +29,7 @@ for sessionIdx = 1:size(dajo_datamap,1)
     
     sessionRowIdx = [];
     sessionRowIdx = find(summaryTable.sessionN == sessionIdx);
-
+    
     dualProbe_flag =  sum(summaryTable.spk_flag(sessionRowIdx)) == 2;
     
     if dualProbe_flag == 0 & summaryTable.spk_flag(sessionRowIdx) == 1 & summaryTable.acc_flag(sessionRowIdx) == 1
@@ -46,24 +46,40 @@ for sessionIdx = 1:size(dajo_datamap,1)
         
     elseif dualProbe_flag == 1 & sum(summaryTable.acc_flag(sessionRowIdx) == 1) == 1
         label{sessionIdx,1} = 'dmfc_acc';
-
+        
     else
         label{sessionIdx,1} = 'beh';
-    end 
-
+    end
+    
+    monkey{sessionIdx,1} = dajo_datamap.animalInfo(sessionIdx).monkey;
+    
 end
 
-clear n_acc_only n_dmfc_only n_dmfc_dmfc n_acc_acc n_dmfc_acc n_beh_only
 
-n_acc_only = sum(strcmp(label,'acc'));
-n_dmfc_only = sum(strcmp(label,'dmfc'));
-n_dmfc_dmfc = sum(strcmp(label,'dmfc_dmfc'));
-n_acc_acc = sum(strcmp(label,'acc_acc'));
-n_dmfc_acc = sum(strcmp(label,'dmfc_acc'));
-n_beh_only = sum(strcmp(label,'beh'));
+sessions_all = 1:size(dajo_datamap,1);
+sessions_da = find(strcmp(monkey,'darwin'));
+sessions_jo = find(strcmp(monkey,'joule'));
+
+inputSession_all = {sessions_all, sessions_da, sessions_jo};
+inputLabel_all = {'all','da','jo'};
+
+for cat = 1:3
+    clear inputSession_cat n_acc_only n_dmfc_only n_dmfc_dmfc n_acc_acc n_dmfc_acc n_beh_only
+    
+    inputSession_cat = inputSession_all{cat};
+    
+    n_acc_only = sum(strcmp(label(inputSession_cat),'acc'));
+    n_dmfc_only = sum(strcmp(label(inputSession_cat),'dmfc'));
+    n_dmfc_dmfc = sum(strcmp(label(inputSession_cat),'dmfc_dmfc'));
+    n_acc_acc = sum(strcmp(label(inputSession_cat),'acc_acc'));
+    n_dmfc_acc = sum(strcmp(label(inputSession_cat),'dmfc_acc'));
+    n_beh_only = sum(strcmp(label(inputSession_cat),'beh'));
+    
+    figure('Renderer', 'painters', 'Position', [100 100 300 300]);
+    donut([n_beh_only,n_dmfc_only,n_acc_only,n_dmfc_acc,n_dmfc_dmfc,n_acc_acc],...
+        {'Behavior','DMFC','ACC','DMFC-ACC','DMFC-DMFC','ACC-ACC'});
+    title(inputLabel_all{cat})
+    
+end
 
 
-
-donut([n_beh_only,n_dmfc_only,n_acc_only,n_dmfc_acc,n_dmfc_dmfc,n_acc_acc],...
-    {'Behavior','DMFC','ACC','DMFC-ACC','DMFC-DMFC','ACC-ACC'})%,...
-    %{[1 0 0],[1 0 0],[1 0 0],[1 0 0],[1 0 0],[1 0 0]})
