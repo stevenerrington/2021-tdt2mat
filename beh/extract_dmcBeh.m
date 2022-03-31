@@ -3,7 +3,11 @@ dataDir = 'S:\Users\Current Lab Members\Steven Errington\2021_DaJo\mat\';
 
 for sessionIdx = 1:size(dajo_datamap,1)
     
+    clear beh_data DMC_table sessionName monkeyName sessionN outTable
     beh_data = load([dataDir dajo_datamap(sessionIdx,:).behInfo.dataFile]);
+    
+    fprintf('Analysing session %i of %i  |  %s    \n',...
+        sessionIdx,size(dajo_datamap,1),dajo_datamap(sessionIdx,:).behInfo.dataFile)
     
     [DMC_table] = cmand_DMCprocess(beh_data.events.stateFlags_,...
         beh_data.events.Infos_);
