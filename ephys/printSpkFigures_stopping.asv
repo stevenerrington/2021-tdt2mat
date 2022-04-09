@@ -61,7 +61,7 @@ for logIdx = 1:size(ephysLog,1)
                         for ssdIdx = 1:length(ttm.C.(trialTypes{trialTypeIdx}))
                             
                             ssrt_target = round([stopSignalBeh.inh_SSD(ssdIdx) + stopSignalBeh.ssrt.integrationWeighted]);
-                            window = 1000+ssrt_target+[-200:800];
+                            window = [-100:800]+ssrt_target;
                             
                             if eventIdx == 1
                                 eventSDF.(events{eventIdx}).(trialTypes{trialTypeIdx}).allSSD(ssdIdx,:) =...
@@ -115,26 +115,26 @@ for logIdx = 1:size(ephysLog,1)
         % SSRT Aligned (conflict) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ax = subplot(9,10, [16 17 18 19 20 26 27 28 29 30 36 37 38 39 40]); hold on
         
-        plot(-200:800,eventSDF.target.C.allSSD(midSSDidx-1,:), 'color', [colors.canceled 0.3])
-        plot(-200:800,eventSDF.target.C.allSSD(midSSDidx,:), 'color', [colors.canceled 0.6])
-        plot(-200:800,eventSDF.target.C.allSSD(midSSDidx+1,:), 'color', [colors.canceled 0.9])
+        plot(-1000:2000,eventSDF.ssrt.C.allSSD(midSSDidx-1,:), 'color', [colors.canceled 0.3])
+        plot(-1000:2000,eventSDF.ssrt.C.allSSD(midSSDidx,:), 'color', [colors.canceled 0.6])
+        plot(-1000:2000,eventSDF.ssrt.C.allSSD(midSSDidx+1,:), 'color', [colors.canceled 0.9])
         
-        plot(-200:800,eventSDF.target.GO.allSSD(midSSDidx+1,:), 'color', [colors.nostop 0.9])
-        plot(-200:800,eventSDF.target.GO.allSSD(midSSDidx+1,:), 'color', [colors.nostop 0.9])
-        plot(-200:800,eventSDF.target.GO.allSSD(midSSDidx+1,:), 'color', [colors.nostop 0.9])
+        plot(-1000:2000,eventSDF.ssrt.GO.allSSD(midSSDidx+1,:), 'color', [colors.nostop 0.9])
+        plot(-1000:2000,eventSDF.ssrt.GO.allSSD(midSSDidx+1,:), 'color', [colors.nostop 0.9])
+        plot(-1000:2000,eventSDF.ssrt.GO.allSSD(midSSDidx+1,:), 'color', [colors.nostop 0.9])
         xlim([-200 600]); vline(0,'k')
         xlabel('Time from SSRT (ms)'); ylabel('FR (spks/sec)')
         title('Conflict Period')
         
-        ymin = nanmin([eventSDF.target.C.matchedSSD, eventSDF.target.GO.matchedSSD,...
+        ymin = nanmin([eventSDF.ssrt.C.matchedSSD, eventSDF.ssrt.GO.matchedSSD,...
             eventSDF.reward.C.matchedSSD, eventSDF.reward.GO.matchedSSD])*0.9;
         
-        ymax = nanmax([eventSDF.target.C.matchedSSD, eventSDF.target.GO.matchedSSD,...
+        ymax = nanmax([eventSDF.ssrt.C.matchedSSD, eventSDF.ssrt.GO.matchedSSD,...
             eventSDF.reward.C.matchedSSD, eventSDF.reward.GO.matchedSSD])*1.1;
         % SSRT Aligned (longer) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ax = subplot(9,10, [51 52 53 54 55 61 62 63 64 65 71 72 73 74 75]); hold on
-        plot(-200:800,eventSDF.target.C.matchedSSD, 'color', colors.canceled)
-        plot(-200:800,eventSDF.target.GO.matchedSSD, 'color', colors.nostop)
+        plot(-1000:2000,eventSDF.ssrt.C.matchedSSD, 'color', colors.canceled)
+        plot(-1000:2000,eventSDF.ssrt.GO.matchedSSD, 'color', colors.nostop)
         xlim([-200 600]); ylim([ymin ymax]); vline(0,'k')
         xlabel('Time from SSRT (ms)'); ylabel('FR (spks/sec)')
         title('Goal Maintenance & Timing Period')
@@ -150,7 +150,7 @@ for logIdx = 1:size(ephysLog,1)
         
         
         %% Figure out
-        figureOutFolder = 'S:\Users\Current Lab Members\Steven Errington\temp\dajo_datacuration\SSRT_SPK-figures2';
+        figureOutFolder = 'S:\Users\Current Lab Members\Steven Errington\temp\dajo_datacuration\SSRT_SPK-figures';
         set(gcf,'Units','inches');
         screenposition = get(gcf,'Position');
         set(gcf,...
@@ -158,7 +158,10 @@ for logIdx = 1:size(ephysLog,1)
             'PaperSize',[screenposition(3:4)]);
         saveas(gcf,[figureOutFolder '\' ephysLog.Session{logIdx} '-' clusters.dsp{clusterIdx} '.jpg'])
         close gcf
-    catch
+    end
+end
+catch
+    continue
     end
     
-end
+    end
