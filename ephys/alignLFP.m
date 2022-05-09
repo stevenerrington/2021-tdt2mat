@@ -29,7 +29,6 @@ parfor channelIdx = 1:nChannels
                 idx_1 = H_T2S(alignmentTimes(trl), G_FS('slow')) + alignmentWindow(1);
                 idx_2 = H_T2S(alignmentTimes(trl), G_FS('slow')) + alignmentWindow(2)-1;
                 
-                
                 alignTemp{channelIdx,alignmentIdx}(trl,:) = tdtLFP.data.(channel)...
                     (idx_1:idx_2);
                 
