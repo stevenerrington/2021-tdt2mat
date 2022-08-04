@@ -49,7 +49,7 @@ for sessionIdx = 1:length(uniqueSessionList)
     %% Run Extraction
     for electrodeIdx = 1:length(areaList)
         clearvars -except ops areaList electrodeIdx sessionInfo ephysLog uniqueSessionList...
-            sessionLogIdx
+            sessionLogIdx dirs
         
         if electrodeIdx == 1 && ops.EEGrecorded  == 1; ops.getEEG = 1; else ops.getEEG = 0; end
         
