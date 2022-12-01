@@ -76,7 +76,7 @@ for cat = 1:3
     n_beh_only = sum(strcmp(label(inputSession_cat),'beh'));
     
     figure('Renderer', 'painters', 'Position', [100 100 300 300]);
-    donut([n_beh_only,n_dmfc_only,n_acc_only,n_dmfc_acc,n_dmfc_dmfc,n_acc_acc],...
+    pie([n_beh_only,n_dmfc_only,n_acc_only,n_dmfc_acc,n_dmfc_dmfc,n_acc_acc],...
         {'Behavior','DMFC','ACC','DMFC-ACC','DMFC-DMFC','ACC-ACC'});
     title(inputLabel_all{cat})
     
